@@ -75,7 +75,6 @@
             box-shadow: 0 3px 10px rgba(0,0,0,0.2);
         }
         
-        /* BANNER DE WHATSAPP */
         .whatsapp-banner {
             position: fixed;
             bottom: 80px;
@@ -105,15 +104,9 @@
         }
         
         @keyframes pulse {
-            0% {
-                box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
-            }
-            50% {
-                box-shadow: 0 5px 25px rgba(37, 211, 102, 0.8);
-            }
-            100% {
-                box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
-            }
+            0% { box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 5px 25px rgba(37, 211, 102, 0.8); }
+            100% { box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4); }
         }
         
         .admin-access {
@@ -127,10 +120,11 @@
             background: var(--accent);
             color: var(--text);
             border: none;
-            padding: 12px 20px;
+            padding: 10px 15px;
             border-radius: 50px;
             cursor: pointer;
             font-weight: bold;
+            font-size: 0.9rem;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             transition: all 0.3s;
         }
@@ -165,16 +159,16 @@
         .product-form {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            gap: 15px;
             background: #f8f9fa;
-            padding: 25px;
+            padding: 20px;
             border-radius: 10px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             border: 2px dashed var(--border);
         }
         
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         
         .form-group.full-width {
@@ -185,18 +179,19 @@
             display: block;
             margin-bottom: 5px;
             font-weight: 500;
+            font-size: 0.9rem;
         }
         
         input, textarea, select {
             width: 100%;
-            padding: 12px;
+            padding: 10px;
             border: 1px solid var(--border);
             border-radius: 5px;
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
         
         textarea {
-            min-height: 100px;
+            min-height: 80px;
             resize: vertical;
         }
         
@@ -204,10 +199,10 @@
             background-color: var(--primary);
             color: white;
             border: none;
-            padding: 12px 25px;
+            padding: 10px 20px;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 500;
             transition: background-color 0.3s;
         }
@@ -244,8 +239,8 @@
         
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
         }
         
         .product-card {
@@ -262,7 +257,7 @@
         }
         
         .product-image {
-            height: 200px;
+            height: 180px;
             background-color: #f0f0f0;
             display: flex;
             align-items: center;
@@ -278,29 +273,29 @@
         }
         
         .product-info {
-            padding: 20px;
+            padding: 15px;
         }
         
         .product-title {
             font-weight: bold;
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-            height: 50px;
+            margin-bottom: 8px;
+            font-size: 1rem;
+            height: 40px;
             overflow: hidden;
         }
         
         .product-price {
             color: var(--success);
             font-weight: bold;
-            font-size: 1.3rem;
-            margin-bottom: 10px;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
         }
         
         .product-description {
             color: var(--light-text);
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-            height: 60px;
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+            height: 50px;
             overflow: hidden;
         }
         
@@ -308,10 +303,10 @@
             display: inline-block;
             background: #eef5ff;
             color: var(--primary);
-            padding: 4px 10px;
+            padding: 3px 8px;
             border-radius: 20px;
-            font-size: 0.8rem;
-            margin-bottom: 10px;
+            font-size: 0.75rem;
+            margin-bottom: 8px;
         }
         
         .contact-info {
@@ -364,11 +359,12 @@
         }
         
         .zone-list li {
-            padding: 8px 0;
+            padding: 6px 0;
             border-bottom: 1px solid #d0e8d0;
             display: flex;
             align-items: center;
             gap: 8px;
+            font-size: 0.9rem;
         }
         
         .zone-list li:last-child {
@@ -379,50 +375,40 @@
             color: var(--success);
         }
         
-        .message-form {
-            max-width: 600px;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            color: var(--light-text);
-            font-size: 0.9rem;
-            border-top: 1px solid var(--border);
-        }
-        
         .empty-state {
             text-align: center;
-            padding: 60px 20px;
+            padding: 40px 20px;
             color: var(--light-text);
         }
         
         .empty-state-icon {
-            font-size: 4rem;
+            font-size: 3rem;
             margin-bottom: 15px;
             opacity: 0.5;
         }
         
         .customer-actions {
             display: flex;
-            gap: 10px;
-            margin-top: 15px;
+            gap: 8px;
+            margin-top: 12px;
         }
         
         .customer-actions .btn {
             flex: 1;
+            padding: 8px 12px;
+            font-size: 0.85rem;
         }
         
         .welcome-message {
             background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
-            padding: 20px;
+            padding: 15px;
             border-radius: 10px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             border-left: 4px solid var(--primary);
+            font-size: 0.9rem;
         }
         
-        .admin-panel {
+        .admin-panel, .login-panel {
             display: none;
             position: fixed;
             top: 0;
@@ -435,17 +421,17 @@
             align-items: center;
         }
         
-        .admin-panel.active {
+        .admin-panel.active, .login-panel.active {
             display: flex;
         }
         
         .admin-content {
             background: white;
-            padding: 30px;
-            border-radius: 15px;
+            padding: 20px;
+            border-radius: 12px;
             width: 90%;
-            max-width: 800px;
-            max-height: 90vh;
+            max-width: 600px;
+            max-height: 85vh;
             overflow-y: auto;
         }
         
@@ -453,38 +439,21 @@
             background: var(--danger);
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 8px 16px;
             border-radius: 5px;
             cursor: pointer;
-            margin-top: 20px;
+            margin-top: 15px;
             float: right;
-        }
-        
-        /* NUEVOS ESTILOS PARA EL LOGIN MEJORADO */
-        .login-panel {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .login-panel.active {
-            display: flex;
+            font-size: 0.9rem;
         }
         
         .login-container {
             background: white;
-            border-radius: 15px;
+            border-radius: 12px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
             width: 100%;
-            max-width: 420px;
-            padding: 40px 35px;
+            max-width: 350px;
+            padding: 25px;
             position: relative;
             overflow: hidden;
         }
@@ -495,37 +464,32 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 5px;
+            height: 4px;
             background: linear-gradient(90deg, var(--primary), #1a4d9c);
         }
         
         .login-header {
             text-align: center;
-            margin-bottom: 35px;
+            margin-bottom: 25px;
         }
         
         .login-icon {
-            font-size: 3.5rem;
-            margin-bottom: 15px;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
             display: block;
             color: var(--primary);
         }
         
         .login-title {
             color: #333;
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
         }
         
         .login-subtitle {
             color: #666;
-            font-size: 1rem;
-        }
-        
-        .form-group {
-            margin-bottom: 25px;
-            position: relative;
+            font-size: 0.9rem;
         }
         
         .input-with-icon {
@@ -534,19 +498,19 @@
         
         .input-icon {
             position: absolute;
-            left: 15px;
+            left: 12px;
             top: 50%;
             transform: translateY(-50%);
             color: #888;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
         
         .login-input {
             width: 100%;
-            padding: 14px 15px 14px 45px;
+            padding: 12px 12px 12px 35px;
             border: 2px solid #e1e5ee;
-            border-radius: 8px;
-            font-size: 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
             transition: all 0.3s;
             background-color: #f8f9fa;
         }
@@ -564,14 +528,14 @@
         
         .toggle-password {
             position: absolute;
-            right: 15px;
+            right: 12px;
             top: 50%;
             transform: translateY(-50%);
             background: none;
             border: none;
             cursor: pointer;
             color: #888;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             transition: color 0.3s;
         }
         
@@ -581,10 +545,10 @@
         
         .login-btn {
             width: 100%;
-            padding: 14px;
+            padding: 12px;
             border: none;
-            border-radius: 8px;
-            font-size: 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
@@ -593,7 +557,7 @@
         .login-btn-primary {
             background: linear-gradient(135deg, var(--primary), #1a4d9c);
             color: white;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             box-shadow: 0 4px 15px rgba(41, 104, 200, 0.4);
         }
         
@@ -612,25 +576,11 @@
             background-color: #e9ecef;
         }
         
-        .credentials {
-            background-color: #f0f4ff;
-            border-radius: 8px;
-            padding: 15px;
-            margin: 25px 0;
-            font-size: 0.9rem;
-            color: #555;
-            border-left: 4px solid var(--primary);
-        }
-        
-        .credentials strong {
-            color: #333;
-        }
-        
         .login-footer {
             text-align: center;
-            margin-top: 25px;
+            margin-top: 20px;
             color: #777;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
         
         .login-footer a {
@@ -646,12 +596,21 @@
         .error-message {
             color: var(--danger);
             text-align: center;
-            margin-top: 15px;
-            padding: 12px;
+            margin-top: 12px;
+            padding: 10px;
             background: #ffe6e6;
-            border-radius: 6px;
+            border-radius: 5px;
             display: none;
+            font-size: 0.85rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: var(--light-text);
             font-size: 0.9rem;
+            border-top: 1px solid var(--border);
         }
         
         @media (max-width: 768px) {
@@ -662,22 +621,25 @@
             
             .product-form {
                 grid-template-columns: 1fr;
+                padding: 15px;
             }
             
             .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 15px;
             }
             
             .admin-content {
                 width: 95%;
-                padding: 20px;
+                padding: 15px;
+                max-width: 500px;
             }
             
             .whatsapp-banner {
                 bottom: 70px;
                 right: 15px;
-                padding: 12px 15px;
-                font-size: 0.9rem;
+                padding: 10px 15px;
+                font-size: 0.8rem;
             }
             
             .whatsapp-banner span:last-child {
@@ -685,11 +647,12 @@
             }
             
             .login-container {
-                padding: 30px 25px;
+                padding: 20px;
+                max-width: 320px;
             }
             
             .login-title {
-                font-size: 1.5rem;
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -704,7 +667,6 @@
                 </div>
             </div>
             
-            <!-- BANNER PROMOCIONAL -->
             <div class="promo-banner">
                 🎉 ¡PAGA SOLO EL 50% AL PEDIR Y EL RESTO AL RECIBIR! 🎉
             </div>
@@ -712,7 +674,6 @@
     </header>
     
     <div class="container">
-        <!-- VISTA CLIENTE (Visible para todos) -->
         <section class="section">
             <h2 class="section-title"><span class="section-icon">🛍️</span> Nuestros Productos</h2>
             
@@ -722,7 +683,6 @@
             </div>
             
             <div class="products-grid" id="products-container">
-                <!-- Los productos se cargarán aquí -->
                 <div class="empty-state" id="empty-state">
                     <div class="empty-state-icon">📦</div>
                     <h3>No hay productos disponibles</h3>
@@ -731,7 +691,6 @@
             </div>
         </section>
         
-        <!-- SECCIÓN DE CONTACTO -->
         <section class="section">
             <h2 class="section-title"><span class="section-icon">📞</span> Contáctanos</h2>
             
@@ -782,22 +741,21 @@
                 </div>
             </div>
             
-            <!-- BOTONES GRANDES DE WHATSAPP -->
-            <div style="text-align: center; margin: 30px 0;">
-                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+            <div style="text-align: center; margin: 25px 0;">
+                <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
                     <a href="https://api.whatsapp.com/send?phone=584121099119&text=Hola%20Moises,%20me%20interesa%20saber%20más%20sobre%20sus%20productos%20y%20la%20promoción%20de%20pago%20del%2050%25" 
                        class="btn btn-whatsapp" 
-                       style="padding: 15px 25px; font-size: 1.1rem; display: inline-flex; align-items: center; gap: 10px; text-decoration: none;"
+                       style="padding: 12px 20px; font-size: 1rem; display: inline-flex; align-items: center; gap: 8px; text-decoration: none;"
                        target="_blank">
-                        <span style="font-size: 1.3rem;">💬</span>
+                        <span style="font-size: 1.1rem;">💬</span>
                         WhatsApp Moises
                     </a>
                     
                     <a href="https://api.whatsapp.com/send?phone=584121096803&text=Hola%20Davian,%20me%20interesa%20saber%20más%20sobre%20sus%20productos%20y%20la%20promoción%20de%20pago%20del%2050%25" 
                        class="btn" 
-                       style="padding: 15px 25px; font-size: 1.1rem; display: inline-flex; align-items: center; gap: 10px; text-decoration: none; background: #25D366; color: white;"
+                       style="padding: 12px 20px; font-size: 1rem; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; background: #25D366; color: white;"
                        target="_blank">
-                        <span style="font-size: 1.3rem;">💬</span>
+                        <span style="font-size: 1.1rem;">💬</span>
                         WhatsApp Davian
                     </a>
                 </div>
@@ -805,7 +763,6 @@
         </section>
     </div>
     
-    <!-- BANNER FLOTANTE DE WHATSAPP -->
     <a href="https://api.whatsapp.com/send?phone=584121099119&text=Hola,%20me%20interesa%20saber%20más%20sobre%20sus%20productos" 
        class="whatsapp-banner"
        target="_blank">
@@ -813,18 +770,16 @@
         <span>¡Escríbenos!</span>
     </a>
     
-    <!-- BOTÓN SECRETO PARA ADMIN (solo tú lo ves) -->
     <div class="admin-access">
         <button class="admin-btn" onclick="openAdminLogin()">🔧 Admin</button>
     </div>
     
-    <!-- NUEVO PANEL DE LOGIN MEJORADO -->
     <div class="login-panel" id="loginPanel">
         <div class="login-container">
             <div class="login-header">
                 <span class="login-icon">🔐</span>
                 <h1 class="login-title">Acceso de Administración</h1>
-                <p class="login-subtitle">Gestiona tu tienda online</p>
+                <p class="login-subtitle">Área restringida</p>
             </div>
             
             <form id="loginForm">
@@ -832,7 +787,7 @@
                     <label for="username">Usuario</label>
                     <div class="input-with-icon">
                         <span class="input-icon">👤</span>
-                        <input type="text" id="username" class="login-input" placeholder="Ingresa tu usuario" required>
+                        <input type="text" id="username" class="login-input" placeholder="Usuario" required>
                     </div>
                 </div>
                 
@@ -841,7 +796,7 @@
                     <div class="password-container">
                         <div class="input-with-icon">
                             <span class="input-icon">🔒</span>
-                            <input type="password" id="password" class="login-input" placeholder="Ingresa tu contraseña" required>
+                            <input type="password" id="password" class="login-input" placeholder="Contraseña" required>
                         </div>
                         <button type="button" class="toggle-password" id="togglePassword">👁️</button>
                     </div>
@@ -851,29 +806,22 @@
                 <button type="button" class="login-btn login-btn-secondary" id="cancelBtn">❌ Cancelar</button>
                 
                 <div class="error-message" id="errorMessage">
-                    ❌ Usuario o contraseña incorrectos
+                    ❌ Credenciales incorrectas
                 </div>
             </form>
             
-            <div class="credentials">
-                <strong>Credenciales de prueba:</strong><br>
-                Usuario: <strong>moises</strong><br>
-                Contraseña: <strong>karly123</strong>
-            </div>
-            
             <div class="login-footer">
-                ¿Problemas para acceder? <a href="#">Contáctanos</a>
+                Acceso restringido al personal autorizado
             </div>
         </div>
     </div>
     
-    <!-- PANEL ADMIN OCULTO -->
     <div class="admin-panel" id="adminPanel">
         <div class="admin-content">
             <h2 class="section-title"><span class="section-icon">👨‍💼</span> Panel de Administración</h2>
             
             <div class="welcome-message">
-                <h3>Bienvenido, Moises</h3>
+                <h3>Bienvenido, Administrador</h3>
                 <p>Gestiona tus productos desde aquí.</p>
             </div>
             
@@ -907,7 +855,7 @@
                 <div class="form-group full-width">
                     <label for="product-image">Imagen (URL)</label>
                     <input type="url" id="product-image" placeholder="https://ejemplo.com/imagen.jpg">
-                    <small style="color: var(--light-text);">Pega aquí la URL de la imagen del producto</small>
+                    <small style="color: var(--light-text); font-size: 0.8rem;">Pega aquí la URL de la imagen del producto</small>
                 </div>
                 
                 <div class="form-group full-width">
@@ -942,18 +890,15 @@
             const emptyState = document.getElementById('empty-state');
             const adminEmptyState = document.getElementById('admin-empty-state');
             
-            // Array para almacenar los productos
             let products = JSON.parse(localStorage.getItem('products')) || [];
             
-            // Mostrar productos al cargar la página
             renderProducts();
             
-            // Manejar envío del formulario de producto
             productForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
                 const product = {
-                    id: Date.now(), // ID único
+                    id: Date.now(),
                     name: document.getElementById('product-name').value,
                     price: parseFloat(document.getElementById('product-price').value).toFixed(2),
                     category: document.getElementById('product-category').value,
@@ -961,29 +906,18 @@
                     image: document.getElementById('product-image').value || 'https://via.placeholder.com/300x200?text=Producto+Sin+Imagen'
                 };
                 
-                // Agregar producto al array
                 products.push(product);
-                
-                // Guardar en localStorage
                 localStorage.setItem('products', JSON.stringify(products));
-                
-                // Actualizar la visualización
                 renderProducts();
-                
-                // Limpiar formulario
                 productForm.reset();
-                
-                // Mostrar mensaje de éxito
                 alert('✅ Producto agregado correctamente!');
             });
             
-            // Función para renderizar los productos
             function renderProducts() {
                 renderCustomerProducts();
                 renderAdminProducts();
             }
             
-            // Renderizar productos para clientes
             function renderCustomerProducts() {
                 if (products.length > 0) {
                     emptyState.style.display = 'none';
@@ -998,7 +932,6 @@
                 }
             }
             
-            // Renderizar productos para admin
             function renderAdminProducts() {
                 if (products.length > 0) {
                     adminEmptyState.style.display = 'none';
@@ -1013,7 +946,6 @@
                 }
             }
             
-            // Crear tarjeta de producto
             function createProductCard(product, isAdminView) {
                 const productCard = document.createElement('div');
                 productCard.className = 'product-card';
@@ -1030,7 +962,7 @@
                 
                 if (isAdminView) {
                     actionsHTML = `
-                        <div style="display: flex; gap: 10px; margin-top: 15px;">
+                        <div style="display: flex; gap: 8px; margin-top: 12px;">
                             <button class="btn btn-danger" style="flex: 1;" onclick="deleteProduct(${product.id})">🗑️ Eliminar</button>
                         </div>
                     `;
@@ -1059,12 +991,10 @@
                 return productCard;
             }
             
-            // Función para abrir panel de login
             window.openAdminLogin = function() {
                 document.getElementById('loginPanel').classList.add('active');
             };
             
-            // Función para cerrar panel de login
             window.closeLoginPanel = function() {
                 document.getElementById('loginPanel').classList.remove('active');
                 document.getElementById('errorMessage').style.display = 'none';
@@ -1072,35 +1002,30 @@
                 document.getElementById('password').value = '';
             };
             
-            // Función de login
             window.login = function() {
                 const username = document.getElementById('username').value;
                 const password = document.getElementById('password').value;
                 const errorMessage = document.getElementById('errorMessage');
                 
-                // Credenciales válidas
+                // Credenciales privadas - solo tú las sabes
                 const validUsername = 'moises';
                 const validPassword = 'karly123';
                 
                 if (username === validUsername && password === validPassword) {
-                    // Login exitoso
                     closeLoginPanel();
                     document.getElementById('adminPanel').classList.add('active');
                     errorMessage.style.display = 'none';
                 } else {
-                    // Login fallido
                     errorMessage.style.display = 'block';
                     document.getElementById('password').value = '';
                     document.getElementById('password').focus();
                 }
             };
             
-            // Función para cerrar panel admin
             window.closeAdminPanel = function() {
                 document.getElementById('adminPanel').classList.remove('active');
             };
             
-            // Función para eliminar producto
             window.deleteProduct = function(id) {
                 if (confirm('¿Estás seguro de que quieres eliminar este producto?')) {
                     products = products.filter(product => product.id !== id);
@@ -1110,14 +1035,12 @@
                 }
             };
             
-            // Función para contacto sobre producto
             window.contactAboutProduct = function(productName) {
                 const message = `Hola, me interesa el producto: ${productName}. ¿Tienen disponibilidad? Quiero aprovechar la promoción de pago del 50% ahora y 50% al recibir.`;
                 const whatsappURL = `https://api.whatsapp.com/send?phone=584121099119&text=${encodeURIComponent(message)}`;
                 window.open(whatsappURL, '_blank');
             };
             
-            // Función para agregar al carrito (simulada)
             window.addToCart = function(id) {
                 const product = products.find(p => p.id === id);
                 if (product) {
@@ -1127,7 +1050,6 @@
                 }
             };
             
-            // Configurar el formulario de login
             document.getElementById('loginForm').addEventListener('submit', function(e) {
                 e.preventDefault();
                 login();
