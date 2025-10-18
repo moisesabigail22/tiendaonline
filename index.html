@@ -383,10 +383,6 @@
             max-width: 600px;
         }
         
-        .message-form .form-group {
-            margin-bottom: 20px;
-        }
-        
         footer {
             text-align: center;
             padding: 20px;
@@ -464,62 +460,200 @@
             float: right;
         }
         
-        /* Estilos para el login */
-        .login-form {
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 30px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        /* NUEVOS ESTILOS PARA EL LOGIN MEJORADO */
+        .login-panel {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
         }
         
-        .login-title {
+        .login-panel.active {
+            display: flex;
+        }
+        
+        .login-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 420px;
+            padding: 40px 35px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .login-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), #1a4d9c);
+        }
+        
+        .login-header {
             text-align: center;
-            margin-bottom: 30px;
-            color: var(--primary);
+            margin-bottom: 35px;
         }
         
         .login-icon {
-            font-size: 3rem;
-            text-align: center;
-            margin-bottom: 20px;
+            font-size: 3.5rem;
+            margin-bottom: 15px;
             display: block;
+            color: var(--primary);
+        }
+        
+        .login-title {
+            color: #333;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .login-subtitle {
+            color: #666;
+            font-size: 1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .input-with-icon {
+            position: relative;
+        }
+        
+        .input-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+            font-size: 1.1rem;
+        }
+        
+        .login-input {
+            width: 100%;
+            padding: 14px 15px 14px 45px;
+            border: 2px solid #e1e5ee;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background-color: #f8f9fa;
+        }
+        
+        .login-input:focus {
+            border-color: var(--primary);
+            background-color: white;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(41, 104, 200, 0.1);
+        }
+        
+        .password-container {
+            position: relative;
+        }
+        
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #888;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+        
+        .toggle-password:hover {
+            color: var(--primary);
         }
         
         .login-btn {
             width: 100%;
-            padding: 15px;
-            background: var(--primary);
-            color: white;
+            padding: 14px;
             border: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
             cursor: pointer;
-            margin-top: 10px;
+            transition: all 0.3s;
         }
         
-        .login-btn:hover {
-            background: #1a4d9c;
+        .login-btn-primary {
+            background: linear-gradient(135deg, var(--primary), #1a4d9c);
+            color: white;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(41, 104, 200, 0.4);
+        }
+        
+        .login-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(41, 104, 200, 0.5);
+        }
+        
+        .login-btn-secondary {
+            background-color: #f8f9fa;
+            color: #666;
+            border: 1px solid #e1e5ee;
+        }
+        
+        .login-btn-secondary:hover {
+            background-color: #e9ecef;
+        }
+        
+        .credentials {
+            background-color: #f0f4ff;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 25px 0;
+            font-size: 0.9rem;
+            color: #555;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .credentials strong {
+            color: #333;
+        }
+        
+        .login-footer {
+            text-align: center;
+            margin-top: 25px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .login-footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .login-footer a:hover {
+            text-decoration: underline;
         }
         
         .error-message {
             color: var(--danger);
             text-align: center;
             margin-top: 15px;
-            padding: 10px;
+            padding: 12px;
             background: #ffe6e6;
-            border-radius: 5px;
+            border-radius: 6px;
             display: none;
+            font-size: 0.9rem;
         }
         
-        .login-note {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 0.9rem;
-            color: var(--light-text);
-        }
-
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
@@ -548,6 +682,14 @@
             
             .whatsapp-banner span:last-child {
                 display: none;
+            }
+            
+            .login-container {
+                padding: 30px 25px;
+            }
+            
+            .login-title {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -676,35 +818,52 @@
         <button class="admin-btn" onclick="openAdminLogin()">🔧 Admin</button>
     </div>
     
-    <!-- PANEL DE LOGIN -->
-    <div class="admin-panel" id="loginPanel">
-        <div class="login-form">
-            <span class="login-icon">🔐</span>
-            <h2 class="login-title">Acceso de Administración</h2>
-            
-            <div class="form-group">
-                <label for="username">Usuario</label>
-                <input type="text" id="username" placeholder="Ingresa tu usuario">
+    <!-- NUEVO PANEL DE LOGIN MEJORADO -->
+    <div class="login-panel" id="loginPanel">
+        <div class="login-container">
+            <div class="login-header">
+                <span class="login-icon">🔐</span>
+                <h1 class="login-title">Acceso de Administración</h1>
+                <p class="login-subtitle">Gestiona tu tienda online</p>
             </div>
             
-            <div class="form-group">
-                <label for="password">Contraseña</label>
-                <input type="password" id="password" placeholder="Ingresa tu contraseña">
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Usuario</label>
+                    <div class="input-with-icon">
+                        <span class="input-icon">👤</span>
+                        <input type="text" id="username" class="login-input" placeholder="Ingresa tu usuario" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <div class="password-container">
+                        <div class="input-with-icon">
+                            <span class="input-icon">🔒</span>
+                            <input type="password" id="password" class="login-input" placeholder="Ingresa tu contraseña" required>
+                        </div>
+                        <button type="button" class="toggle-password" id="togglePassword">👁️</button>
+                    </div>
+                </div>
+                
+                <button type="submit" class="login-btn login-btn-primary">🚪 Iniciar Sesión</button>
+                <button type="button" class="login-btn login-btn-secondary" id="cancelBtn">❌ Cancelar</button>
+                
+                <div class="error-message" id="errorMessage">
+                    ❌ Usuario o contraseña incorrectos
+                </div>
+            </form>
+            
+            <div class="credentials">
+                <strong>Credenciales de prueba:</strong><br>
+                Usuario: <strong>moises</strong><br>
+                Contraseña: <strong>karly123</strong>
             </div>
             
-            <button class="login-btn" onclick="login()">🚪 Iniciar Sesión</button>
-            
-            <div class="error-message" id="errorMessage">
-                ❌ Usuario o contraseña incorrectos
+            <div class="login-footer">
+                ¿Problemas para acceder? <a href="#">Contáctanos</a>
             </div>
-            
-            <div class="login-note">
-                <p><strong>Credenciales de prueba:</strong></p>
-                <p>Usuario: <strong>moises</strong></p>
-                <p>Contraseña: <strong>karly123</strong></p>
-            </div>
-            
-            <button class="close-admin" onclick="closeLoginPanel()" style="margin-top: 20px; width: 100%;">❌ Cancelar</button>
         </div>
     </div>
     
@@ -908,6 +1067,9 @@
             // Función para cerrar panel de login
             window.closeLoginPanel = function() {
                 document.getElementById('loginPanel').classList.remove('active');
+                document.getElementById('errorMessage').style.display = 'none';
+                document.getElementById('username').value = '';
+                document.getElementById('password').value = '';
             };
             
             // Función de login
@@ -928,8 +1090,8 @@
                 } else {
                     // Login fallido
                     errorMessage.style.display = 'block';
-                    document.getElementById('username').value = '';
                     document.getElementById('password').value = '';
+                    document.getElementById('password').focus();
                 }
             };
             
@@ -964,6 +1126,23 @@
                     window.open(whatsappURL, '_blank');
                 }
             };
+            
+            // Configurar el formulario de login
+            document.getElementById('loginForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                login();
+            });
+            
+            document.getElementById('togglePassword').addEventListener('click', function() {
+                const passwordInput = document.getElementById('password');
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                this.textContent = type === 'password' ? '👁️' : '🔒';
+            });
+            
+            document.getElementById('cancelBtn').addEventListener('click', function() {
+                closeLoginPanel();
+            });
         });
     </script>
 </body>
