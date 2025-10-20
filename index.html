@@ -262,6 +262,7 @@
             box-shadow: 0 3px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s;
             border: 1px solid var(--border);
+            cursor: pointer;
         }
         
         .product-card:hover {
@@ -418,6 +419,128 @@
             margin-bottom: 20px;
             border-left: 4px solid var(--primary);
             font-size: 0.9rem;
+        }
+        
+        /* MODAL PARA PRODUCTOS */
+        .product-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .product-modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 2px solid var(--secondary);
+        }
+        
+        .modal-title {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin: 0;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--light-text);
+            transition: color 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: var(--danger);
+        }
+        
+        .modal-body {
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+        
+        .modal-image {
+            height: 400px;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .modal-info {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .modal-price {
+            color: var(--success);
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .modal-description {
+            color: var(--text);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .modal-category {
+            display: inline-block;
+            background: #eef5ff;
+            color: var(--primary);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .modal-actions .btn {
+            flex: 1;
+            padding: 15px;
+            font-size: 1rem;
+            font-weight: 600;
         }
         
         .admin-panel, .login-panel {
@@ -696,6 +819,22 @@
             .login-title {
                 font-size: 1.2rem;
             }
+            
+            .modal-body {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-image {
+                height: 250px;
+            }
+            
+            .modal-actions {
+                flex-direction: column;
+            }
+            
+            .modal-actions .btn {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -803,6 +942,32 @@
                 </div>
             </div>
         </section>
+    </div>
+    
+    <!-- MODAL PARA PRODUCTOS -->
+    <div class="product-modal" id="productModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalProductName">Nombre del Producto</h2>
+                <button class="close-modal" onclick="closeProductModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modalProductImage" src="" alt="Producto">
+                </div>
+                <div class="modal-info">
+                    <div>
+                        <div class="modal-category" id="modalProductCategory">Categoría</div>
+                        <div class="modal-price" id="modalProductPrice">$0.00</div>
+                        <div class="modal-description" id="modalProductDescription">Descripción del producto...</div>
+                    </div>
+                    <div class="modal-actions">
+                        <button class="btn btn-accent" onclick="consultarProducto()">💬 Consultar</button>
+                        <button class="btn" onclick="comprarProducto()" style="background: var(--success);">🛒 Comprar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     
     <a href="https://api.whatsapp.com/send?phone=584121099119&text=Hola,%20me%20interesa%20saber%20más%20sobre%20sus%20productos" 
@@ -939,14 +1104,16 @@
     </footer>
 
     <script>
+        // Variables globales
+        let currentProduct = null;
+        let products = JSON.parse(localStorage.getItem('products')) || [];
+        
         document.addEventListener('DOMContentLoaded', function() {
             const productForm = document.getElementById('product-form');
             const productsContainer = document.getElementById('products-container');
             const adminProductsContainer = document.getElementById('admin-products-container');
             const emptyState = document.getElementById('empty-state');
             const adminEmptyState = document.getElementById('admin-empty-state');
-            
-            let products = JSON.parse(localStorage.getItem('products')) || [];
             
             renderProducts();
             
@@ -1059,12 +1226,12 @@
                 }
                 
                 productCard.innerHTML = `
-                    <div class="product-image">
+                    <div class="product-image" onclick="openProductModal(${product.id})">
                         <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/300x200?text=Imagen+No+Disponible'">
                     </div>
                     <div class="product-info">
                         <div class="product-category">${categoryNames[product.category]}</div>
-                        <div class="product-title">${product.name}</div>
+                        <div class="product-title" onclick="openProductModal(${product.id})" style="cursor: pointer;">${product.name}</div>
                         <div class="product-price">$${product.price}</div>
                         <div class="product-description">${product.description}</div>
                         ${actionsHTML}
@@ -1073,6 +1240,61 @@
                 
                 return productCard;
             }
+            
+            // FUNCIONES PARA EL MODAL DE PRODUCTO
+            window.openProductModal = function(productId) {
+                const product = products.find(p => p.id === productId);
+                if (product) {
+                    currentProduct = product;
+                    
+                    const categoryNames = {
+                        'electronics': 'Electrónicos',
+                        'home': 'Hogar',
+                        'clothing': 'Ropa',
+                        'sports': 'Deportes',
+                        'other': 'Otros'
+                    };
+                    
+                    document.getElementById('modalProductName').textContent = product.name;
+                    document.getElementById('modalProductImage').src = product.image;
+                    document.getElementById('modalProductImage').alt = product.name;
+                    document.getElementById('modalProductCategory').textContent = categoryNames[product.category];
+                    document.getElementById('modalProductPrice').textContent = `$${product.price}`;
+                    document.getElementById('modalProductDescription').textContent = product.description;
+                    
+                    document.getElementById('productModal').classList.add('active');
+                }
+            };
+            
+            window.closeProductModal = function() {
+                document.getElementById('productModal').classList.remove('active');
+                currentProduct = null;
+            };
+            
+            window.consultarProducto = function() {
+                if (currentProduct) {
+                    const message = `Hola, me interesa el producto: ${currentProduct.name}. ¿Tienen disponibilidad? Quiero aprovechar la promoción de pago del 50% ahora y 50% al recibir.`;
+                    const whatsappURL = `https://api.whatsapp.com/send?phone=584121099119&text=${encodeURIComponent(message)}`;
+                    window.open(whatsappURL, '_blank');
+                    closeProductModal();
+                }
+            };
+            
+            window.comprarProducto = function() {
+                if (currentProduct) {
+                    const message = `Hola, quiero comprar: ${currentProduct.name} por $${currentProduct.price}. Quiero aprovechar la promoción de pago del 50% ahora y 50% al recibir.`;
+                    const whatsappURL = `https://api.whatsapp.com/send?phone=584121099119&text=${encodeURIComponent(message)}`;
+                    window.open(whatsappURL, '_blank');
+                    closeProductModal();
+                }
+            };
+            
+            // Cerrar modal al hacer clic fuera del contenido
+            document.getElementById('productModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeProductModal();
+                }
+            });
             
             window.openAdminLogin = function() {
                 document.getElementById('loginPanel').classList.add('active');
