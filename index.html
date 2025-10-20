@@ -295,6 +295,7 @@
             font-size: 1rem;
             height: 40px;
             overflow: hidden;
+            cursor: pointer;
         }
         
         .product-price {
@@ -1219,7 +1220,7 @@
                     // VISTA CLIENTE - Los clientes NO ven los links de Mercado Libre
                     actionsHTML = `
                         <div class="customer-actions">
-                            <button class="btn btn-accent" onclick="contactAboutProduct('${product.name}')">💬 Consultar</button>
+                            <button class="btn btn-accent" onclick="contactAboutProduct('${product.name}', ${product.id})">💬 Consultar</button>
                             <button class="btn" onclick="addToCart(${product.id})">🛒 Comprar</button>
                         </div>
                     `;
@@ -1231,7 +1232,7 @@
                     </div>
                     <div class="product-info">
                         <div class="product-category">${categoryNames[product.category]}</div>
-                        <div class="product-title" onclick="openProductModal(${product.id})" style="cursor: pointer;">${product.name}</div>
+                        <div class="product-title" onclick="openProductModal(${product.id})">${product.name}</div>
                         <div class="product-price">$${product.price}</div>
                         <div class="product-description">${product.description}</div>
                         ${actionsHTML}
@@ -1349,8 +1350,10 @@
                 }
             };
             
-            window.contactAboutProduct = function(productName) {
-                const message = `Hola, me interesa el producto: ${productName}. ¿Tienen disponibilidad? Quiero aprovechar la promoción de pago del 50% ahora y 50% al recibir.`;
+            window.contactAboutProduct = function(productName, productId) {
+                const product = products.find(p => p.id === productId);
+                let message = `Hola, me interesa el producto: ${productName}. ¿Tienen disponibilidad? Quiero aprovechar la promoción de pago del 50% ahora y 50% al recibir.`;
+                
                 const whatsappURL = `https://api.whatsapp.com/send?phone=584121099119&text=${encodeURIComponent(message)}`;
                 window.open(whatsappURL, '_blank');
             };
