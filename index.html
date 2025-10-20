@@ -15,6 +15,7 @@
             --success: #00a650;
             --danger: #f04449;
             --whatsapp: #25D366;
+            --mercadolibre: #ffe600;
         }
         
         * {
@@ -237,6 +238,17 @@
             background-color: #128C7E;
         }
         
+        .btn-mercadolibre {
+            background-color: var(--mercadolibre);
+            color: #2D3277;
+            border: 1px solid #2D3277;
+            font-weight: bold;
+        }
+        
+        .btn-mercadolibre:hover {
+            background-color: #f2d600;
+        }
+        
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -264,18 +276,12 @@
             justify-content: center;
             color: var(--light-text);
             overflow: hidden;
-            cursor: pointer;
         }
         
         .product-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s;
-        }
-        
-        .product-image:hover img {
-            transform: scale(1.05);
         }
         
         .product-info {
@@ -414,7 +420,7 @@
             font-size: 0.9rem;
         }
         
-        .admin-panel, .login-panel, .product-modal {
+        .admin-panel, .login-panel {
             display: none;
             position: fixed;
             top: 0;
@@ -427,7 +433,7 @@
             align-items: center;
         }
         
-        .admin-panel.active, .login-panel.active, .product-modal.active {
+        .admin-panel.active, .login-panel.active {
             display: flex;
         }
         
@@ -619,111 +625,34 @@
             border-top: 1px solid var(--border);
         }
         
-        /* Estilos para el modal de producto */
-        .product-modal-content {
-            background: white;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 800px;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-        
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--danger);
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2rem;
-            z-index: 10;
+        .url-input-group {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-        }
-        
-        .close-modal:hover {
-            background: #d32f2f;
-        }
-        
-        .product-detail {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            padding: 30px;
-        }
-        
-        .product-detail-image {
-            width: 100%;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .product-detail-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        .product-detail-info {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        
-        .product-detail-category {
-            display: inline-block;
-            background: #eef5ff;
-            color: var(--primary);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-        
-        .product-detail-title {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--text);
-            line-height: 1.2;
-        }
-        
-        .product-detail-price {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--success);
-        }
-        
-        .product-detail-description {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: var(--light-text);
-            margin: 10px 0;
-        }
-        
-        .product-detail-actions {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .product-detail-actions .btn {
-            flex: 1;
-            padding: 12px 20px;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             gap: 8px;
+            align-items: center;
+        }
+        
+        .url-input-group input {
+            flex: 1;
+        }
+        
+        .url-badge {
+            background: #ffe600;
+            color: #2D3277;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        
+        .mercadolibre-info {
+            background: #fffae6;
+            border: 1px solid #ffe600;
+            border-radius: 5px;
+            padding: 8px 10px;
+            margin-top: 5px;
+            font-size: 0.8rem;
+            color: #666;
         }
         
         @media (max-width: 768px) {
@@ -766,20 +695,6 @@
             
             .login-title {
                 font-size: 1.2rem;
-            }
-            
-            .product-detail {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                padding: 20px;
-            }
-            
-            .product-detail-title {
-                font-size: 1.5rem;
-            }
-            
-            .product-detail-price {
-                font-size: 1.7rem;
             }
         }
     </style>
@@ -901,16 +816,6 @@
         <button class="admin-btn" onclick="openAdminLogin()">🔧 Admin</button>
     </div>
     
-    <!-- Modal para mostrar detalles del producto -->
-    <div class="product-modal" id="productModal">
-        <div class="product-modal-content">
-            <button class="close-modal" onclick="closeProductModal()">✕</button>
-            <div class="product-detail" id="productDetailContent">
-                <!-- El contenido se llenará dinámicamente con JavaScript -->
-            </div>
-        </div>
-    </div>
-    
     <div class="login-panel" id="loginPanel">
         <div class="login-container">
             <div class="login-header">
@@ -959,7 +864,7 @@
             
             <div class="welcome-message">
                 <h3>Bienvenido, Administrador</h3>
-                <p>Gestiona tus productos desde aquí.</p>
+                <p>Gestiona tus productos desde aquí. Los links de Mercado Libre son solo para tu uso interno.</p>
             </div>
             
             <form id="product-form" class="product-form">
@@ -993,6 +898,20 @@
                     <label for="product-image">Imagen (URL)</label>
                     <input type="url" id="product-image" placeholder="https://ejemplo.com/imagen.jpg">
                     <small style="color: var(--light-text); font-size: 0.8rem;">Pega aquí la URL de la imagen del producto</small>
+                </div>
+
+                <!-- CAMPO PARA LINK DE MERCADO LIBRE (SOLO PARA ADMIN) -->
+                <div class="form-group full-width">
+                    <label for="product-mercadolibre">
+                        <span>🔗 Link de Mercado Libre</span>
+                        <span class="url-badge">SOLO PARA TI</span>
+                    </label>
+                    <div class="url-input-group">
+                        <input type="url" id="product-mercadolibre" placeholder="https://articulo.mercadolibre.com/ve/...">
+                    </div>
+                    <div class="mercadolibre-info">
+                        💡 <strong>Uso interno:</strong> Este link solo lo verás tú en el panel de administración para comprar los productos cuando te los pidan.
+                    </div>
                 </div>
                 
                 <div class="form-group full-width">
@@ -1040,7 +959,8 @@
                     price: parseFloat(document.getElementById('product-price').value).toFixed(2),
                     category: document.getElementById('product-category').value,
                     description: document.getElementById('product-description').value,
-                    image: document.getElementById('product-image').value || 'https://via.placeholder.com/300x200?text=Producto+Sin+Imagen'
+                    image: document.getElementById('product-image').value || 'https://via.placeholder.com/300x200?text=Producto+Sin+Imagen',
+                    mercadolibre: document.getElementById('product-mercadolibre').value || ''
                 };
                 
                 products.push(product);
@@ -1098,12 +1018,38 @@
                 let actionsHTML = '';
                 
                 if (isAdminView) {
+                    // VISTA ADMIN - Solo tú ves los links de Mercado Libre
+                    let mercadolibreSection = '';
+                    if (product.mercadolibre) {
+                        mercadolibreSection = `
+                            <div style="margin: 10px 0; padding: 8px; background: #fffae6; border-radius: 5px; border-left: 3px solid #ffe600;">
+                                <div style="font-size: 0.8rem; color: #666; margin-bottom: 5px;">
+                                    <strong>🔗 Link Mercado Libre:</strong>
+                                </div>
+                                <div style="font-size: 0.75rem; word-break: break-all; color: #2D3277;">
+                                    ${product.mercadolibre}
+                                </div>
+                                <button class="btn btn-mercadolibre" onclick="openMercadoLibre('${product.mercadolibre}')" style="margin-top: 5px; width: 100%; padding: 6px;">
+                                    🛒 Abrir en Mercado Libre
+                                </button>
+                            </div>
+                        `;
+                    } else {
+                        mercadolibreSection = `
+                            <div style="margin: 10px 0; padding: 8px; background: #f8f9fa; border-radius: 5px; font-size: 0.8rem; color: #666; text-align: center;">
+                                ⚠️ No hay link de Mercado Libre
+                            </div>
+                        `;
+                    }
+                    
                     actionsHTML = `
+                        ${mercadolibreSection}
                         <div style="display: flex; gap: 8px; margin-top: 12px;">
                             <button class="btn btn-danger" style="flex: 1;" onclick="deleteProduct(${product.id})">🗑️ Eliminar</button>
                         </div>
                     `;
                 } else {
+                    // VISTA CLIENTE - Los clientes NO ven los links de Mercado Libre
                     actionsHTML = `
                         <div class="customer-actions">
                             <button class="btn btn-accent" onclick="contactAboutProduct('${product.name}')">💬 Consultar</button>
@@ -1113,7 +1059,7 @@
                 }
                 
                 productCard.innerHTML = `
-                    <div class="product-image" onclick="openProductModal(${product.id})">
+                    <div class="product-image">
                         <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/300x200?text=Imagen+No+Disponible'">
                     </div>
                     <div class="product-info">
@@ -1127,46 +1073,6 @@
                 
                 return productCard;
             }
-            
-            window.openProductModal = function(productId) {
-                const product = products.find(p => p.id === productId);
-                if (!product) return;
-                
-                const categoryNames = {
-                    'electronics': 'Electrónicos',
-                    'home': 'Hogar',
-                    'clothing': 'Ropa',
-                    'sports': 'Deportes',
-                    'other': 'Otros'
-                };
-                
-                const modalContent = document.getElementById('productDetailContent');
-                modalContent.innerHTML = `
-                    <div class="product-detail-image">
-                        <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/500x400?text=Imagen+No+Disponible'">
-                    </div>
-                    <div class="product-detail-info">
-                        <div class="product-detail-category">${categoryNames[product.category]}</div>
-                        <h1 class="product-detail-title">${product.name}</h1>
-                        <div class="product-detail-price">$${product.price}</div>
-                        <p class="product-detail-description">${product.description}</p>
-                        <div class="product-detail-actions">
-                            <button class="btn btn-accent" onclick="contactAboutProduct('${product.name}')">
-                                💬 Consultar
-                            </button>
-                            <button class="btn" onclick="addToCart(${product.id})">
-                                🛒 Comprar Ahora
-                            </button>
-                        </div>
-                    </div>
-                `;
-                
-                document.getElementById('productModal').classList.add('active');
-            };
-            
-            window.closeProductModal = function() {
-                document.getElementById('productModal').classList.remove('active');
-            };
             
             window.openAdminLogin = function() {
                 document.getElementById('loginPanel').classList.add('active');
@@ -1212,6 +1118,15 @@
                 }
             };
             
+            // FUNCIÓN PARA ABRIR LINK DE MERCADO LIBRE (SOLO ADMIN)
+            window.openMercadoLibre = function(url) {
+                if (url) {
+                    window.open(url, '_blank');
+                } else {
+                    alert('No hay link de Mercado Libre para este producto');
+                }
+            };
+            
             window.contactAboutProduct = function(productName) {
                 const message = `Hola, me interesa el producto: ${productName}. ¿Tienen disponibilidad? Quiero aprovechar la promoción de pago del 50% ahora y 50% al recibir.`;
                 const whatsappURL = `https://api.whatsapp.com/send?phone=584121099119&text=${encodeURIComponent(message)}`;
@@ -1241,20 +1156,6 @@
             
             document.getElementById('cancelBtn').addEventListener('click', function() {
                 closeLoginPanel();
-            });
-            
-            // Cerrar modal al hacer clic fuera del contenido
-            document.getElementById('productModal').addEventListener('click', function(e) {
-                if (e.target === this) {
-                    closeProductModal();
-                }
-            });
-            
-            // Cerrar modal con tecla Escape
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    closeProductModal();
-                }
             });
         });
     </script>
